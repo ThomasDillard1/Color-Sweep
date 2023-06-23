@@ -9,7 +9,7 @@ var grid = [];
 var oldColor, newColor, boardSize;
 var sweeps = 0;
 var win = false;
-var maxClicks = 25;
+var maxClicks = 0;
 
 function makeCanvas() {
     var numColors = parseInt(document.getElementById("color-options").value);
@@ -63,8 +63,6 @@ function handleMouseClick(event){
     if(oldColor != newColor){
         sweeps++;
         updateBoard(0, 0);
-    }else{
-        newColor = null;
     }
 }
 
@@ -78,19 +76,21 @@ function updateBoard(i, j){
             return;
         }
         grid[i][j] = newColor;
+        updateCanvas(i, j); 
 
-        //Update on the canvas
-        context.fillStyle = grid[i][j];
-        context.fillRect(j*cellSize, i*cellSize, cellSize, cellSize); // fills canvas going row by row from top to bottom
-
-        setTimeout(function(){
-            helper(i - 1, j);
-            helper(i + 1, j);
-            helper(i, j - 1);
-            helper(i, j + 1);
-        }, 15)
+        helper(i - 1, j);
+        helper(i + 1, j);
+        helper(i, j - 1);
+        helper(i, j + 1);
     }
     updateScore();
+}
+
+function updateCanvas(i, j){
+    setTimeout(function(){
+        context.fillStyle = grid[i][j];
+        context.fillRect(j*cellSize, i*cellSize, cellSize, cellSize); // fills canvas going row by row from top to bottom
+    }, 100)
 }
 
 function updateScore(){
