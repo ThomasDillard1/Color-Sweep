@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Sweep</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div style = "text-align:center;">
+        <h1>Color Sweep</h1>
+        <form id="game-form" action="/" method="get">
+            <label for="board-size">Size:</label>
+            <select id="board-size" name="Board sizes">
+                <option value="2">2x2</option>
+                <option value="6">6x6</option>
+                <option value="10">10x10</option>
+                <option value="14" selected>14x14</option>
+                <option value="18">18x18</option>
+                <option value="22">22x22</option>
+                <option value="26">26x26</option>
+            </select>
+            <label for="color-options">Colors:</label>
+            <select id="color-options" name="Colors options">
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6" selected>6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+            <input type="Button" value="Start Game" onClick="makeCanvas()">
+        </form>
+
+        <canvas id="canvas" width="280" height="280"style="border: solid black 7.5px;"></canvas>
+        <div id="score" style="font-size:200%">
+            0/25
+        </div>
+    </div>
+    <script src="grid.js"></script>
+</body>
+</html>
