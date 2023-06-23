@@ -90,7 +90,7 @@ function updateCanvas(i, j){
     setTimeout(function(){
         context.fillStyle = grid[i][j];
         context.fillRect(j*cellSize, i*cellSize, cellSize, cellSize); // fills canvas going row by row from top to bottom
-    }, 100)
+    }, 150)
 }
 
 function updateScore(){
